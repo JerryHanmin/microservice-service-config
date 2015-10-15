@@ -1,0 +1,227 @@
+swagger: '2.0'
+info:
+  title: Oauth2
+  description: Oauth2 描述 
+  version: 1.0.0
+host: '10.9.42.203:8087'
+schemes:
+  - http
+basePath: /security
+produces:
+  - application/json;charset=UTF-8
+consumes:
+  - application/json;charset=UTF-8
+paths:
+  '/oauth/accesstoken':
+    post:
+      consumes:
+        - application/json;charset=UTF-8
+      summary: 获取Access token
+      description: 通过用户账号密码快速获取Access token
+      parameters:
+        - name: Auth2Request
+          in: body
+          description: 用户账号和密码
+          schema:
+            $ref: '#/definitions/Auth2Request'
+          required: true
+          
+      tags:
+        - accesstoken
+      responses:
+        '200':
+          description: 成功返回状态码
+          schema:
+            $ref: '#/definitions/Activities'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /users:
+    get:
+      produces:
+        - application/hal+json;charset=UTF-8
+      summary: 查询用户
+      description: 查询用户
+      parameters:
+        - name: X-Token
+          default: '{X-Token}'
+          in: header
+          type: string
+          description: 输入有效的X-Token
+          required: true
+      
+      tags:
+        - users
+      responses:
+        '200':
+          description: 成功返回状态码
+          schema:
+            $ref: '#/definitions/Activities'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: 新增用户
+      description: 新增用户
+      parameters:
+        - name: Auth2AddRequest
+          in: body
+          schema:
+            $ref: '#/definitions/Auth2AddRequest'
+          required: true
+        - name: X-Token
+          default: '{X-Token}'
+          in: header
+          type: string
+          description: 输入有验的X-Token
+          required: true
+      
+      tags:
+        - users
+      consumes: 
+        - application/hal+json;charset=UTF-8
+      responses:
+        '200':
+          description: 成功返回状态码
+          schema:
+            $ref: '#/definitions/Activities'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /users/syncaccount:
+    post:
+      consumes:
+        - application/vnd.jiahua.commands.syncaccount+json
+      summary: 同步用户
+      description: 同步user用户到oauth2中
+      parameters:
+        - name: Auth2Request
+          in: body
+          description: 用户登录名和密码
+          schema:
+            $ref: '#/definitions/Auth2Request'
+          required: true
+        - name: X-Token
+          default: '{X-Token}'
+          in: header
+          type: string
+          description: 输入有验的X-Token
+          required: true
+      tags:
+        - users
+      responses:
+        '200':
+          description: 成功返回状态码
+          schema:
+            $ref: '#/definitions/Activities'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'          
+  /users/myInfo:
+    get:
+      summary: Access token获取用户uuid
+      description: 使用Access token获取用户uuid
+      parameters:
+        - name: X-Token
+          default: '{X-Token}'
+          in: header
+          type: string
+          description: 输入有验的X-Token
+          required: true
+      
+      tags:
+        - users
+      responses:
+        '200':
+          description: 成功返回状态码
+          schema:
+            $ref: '#/definitions/Activities'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /users/userInfo/{loginName}:
+    get:
+      summary: 通过用户名获取用户uuid
+      description: 通过户获取用户uuid
+      parameters:
+        - name: loginName
+          in: path
+          type: string
+          description: 用户登录名
+          required: true
+        - name: X-Token
+          default: '{X-Token}'
+          in: header
+          type: string
+          description: 输入有验的X-Token
+          required: true
+      tags:
+        - users
+      responses:
+        '200':
+          description: 成功返回状态码
+          schema:
+            $ref: '#/definitions/Activities'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+definitions:
+  Activity:
+    properties:
+      uuid:
+        type: string
+        description: Unique identifier for the activity
+  Activities:
+    properties:
+      offset:
+        type: integer
+        format: int32
+        description: Position in pagination.
+      limit:
+        type: integer
+        format: int32
+        description: Number of items to retrieve (100 max).
+      count:
+        type: integer
+        format: int32
+        description: Total number of items available.
+      history:
+        type: array
+        items:
+          $ref: '#/definitions/Activity'
+  Auth2Request:
+    properties:
+      loginName:
+        type: string
+        description: Description of auth2.
+      password:
+        type: string
+        description: Display name of auth2.
+  Auth2AddRequest:
+    properties:
+      loginName:
+        type: string
+        description: Description of auth2.
+      password:
+        type: string
+        description: Display name of auth2.
+      roles:
+        type: string
+        description: Display name of auth2.
+  Error:
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
