@@ -1,6 +1,3 @@
-spring:
-  profiles: dev
-
 {"namespace": "changhongit.order",
  "type": "record",
  "name": "orderAddedEvent",
