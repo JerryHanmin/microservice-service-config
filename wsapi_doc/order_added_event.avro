@@ -1,0 +1,9 @@
+{"namespace": "changhongit.order",
+ "type": "record",
+ "name": "orderAddedEvent",
+ "fields": [
+     {"name": "uuid", "type": "string"},
+     {"name": "orderNo",  "type": "string"},
+     {"name": "type",  "type": "string"}
+ ]
+}
