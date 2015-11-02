@@ -4,7 +4,7 @@ server:
   port: 10001
 eureka:
   instance:
-    hostname: demo1
+    hostname: demo2
     appname: github-demo1-service
     virtual-host-name: loving.demo1.service
     metadataMap:
