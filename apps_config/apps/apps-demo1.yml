@@ -1,6 +1,4 @@
-﻿spring:
+spring:
   profiles: dev
-  application:
-      name: demo1
 server:
   port: 10001
