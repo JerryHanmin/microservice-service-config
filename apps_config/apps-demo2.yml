@@ -1,0 +1,24 @@
+spring:
+  profiles: dev
+server:
+  port: 10002
+eureka:
+  instance:
+    hostname: demo2
+    appname: github-demo2-service
+    virtual-host-name: loving.demo2.service
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/discovery/eureka/
+ribbon:
+  eureka:
+   enabled: true
+myclient:
+  ribbon:
+    NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
+    ServerListRefreshInterval: 30000
+    DeploymentContextBasedVipAddresses: demo2service
