@@ -1,6 +1,11 @@
 server:
-   port: 9002
+  port: 9002
 eureka:
   instance:
     virtualHostName: ribbon-server
     appGroupName: testGroup
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/discovery/eureka/
