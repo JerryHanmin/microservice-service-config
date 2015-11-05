@@ -2,7 +2,7 @@ server:
   port: 9003
 eureka:
   instance:
-    virtualHostName: ribbon-client 
+    virtualHostName: ribbon-client
     appGroupName: testGroup
   client:
     region: default
