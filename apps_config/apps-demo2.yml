@@ -17,7 +17,11 @@ eureka:
 ribbon:
   eureka:
    enabled: true
-   
+spring:
+  cloud:
+    client:
+      serviceIds:
+        - demo1service
 ribbonclient:
   ribbon:
     NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
