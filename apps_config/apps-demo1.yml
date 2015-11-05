@@ -17,9 +17,6 @@ eureka:
 ribbon:
   eureka:
    enabled: true
-   
-ribbonclient:
-  ribbon:
-    NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
-    ServerListRefreshInterval: 30000
-    DeploymentContextBasedVipAddresses: demo1service
+  NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
+  ServerListRefreshInterval: 30000
+  DeploymentContextBasedVipAddresses: demo2service
