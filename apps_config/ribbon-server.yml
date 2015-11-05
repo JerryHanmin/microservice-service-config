@@ -2,7 +2,6 @@ server:
   port: 9002
 eureka:
   instance:
-    virtualHostName: ribbon-server
     appGroupName: testGroup
   client:
     registerWithEureka: true
