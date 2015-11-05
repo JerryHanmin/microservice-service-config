@@ -19,4 +19,4 @@ ribbon:
    enabled: true
   NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
   ServerListRefreshInterval: 30000
-  DeploymentContextBasedVipAddresses: demo1service
+  DeploymentContextBasedVipAddresses: github-demo1-service
