@@ -1,0 +1,36 @@
+server:
+  port: 9003
+eureka:
+  instance:
+    virtualHostName: kafka-consumer
+    appGroupName: sample-group
+    preferIpAddress: false
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    region: default
+    registryFetchIntervalSeconds: 5
+    availabilityZones:
+      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/discovery/eureka/
+
+group:
+  id: kafka-sample-group
+  
+zookeeper:
+  connect: localhost:2181
+  session:
+    timeout:
+      ms: 14000
+  sync:
+    time:
+      ms: 200
+kafka:
+  sample:
+    topic: kafka-sample-message
+  consumer:
+    thread:
+      num: 8
