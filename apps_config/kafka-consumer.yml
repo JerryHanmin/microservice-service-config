@@ -34,3 +34,9 @@ kafka:
   consumer:
     thread:
       num: 8
+auto:
+  commit:
+    interval:
+      ms: 1000
+  offset:
+    reset: smallest
