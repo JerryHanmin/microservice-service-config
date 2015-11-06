@@ -4,6 +4,7 @@ eureka:
   instance:
     virtualHostName: ribbon-client
     appGroupName: testGroup
+    preferIpAddress: true
   client:
     region: default
     registryFetchIntervalSeconds: 5
