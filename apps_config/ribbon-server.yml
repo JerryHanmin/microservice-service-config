@@ -4,6 +4,7 @@ eureka:
   instance:
     virtualHostName: ribbon-server
     appGroupName: testGroup
+    preferIpAddress: true
   client:
     registerWithEureka: true
     fetchRegistry: true
