@@ -5,6 +5,8 @@ eureka:
     virtualHostName: ribbon-server
     appGroupName: testGroup
     preferIpAddress: false  #true: display ip address false: display pc name
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
   client:
     registerWithEureka: true
     fetchRegistry: true
