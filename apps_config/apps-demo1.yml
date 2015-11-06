@@ -5,8 +5,8 @@ server:
 eureka:
   instance:
     hostname: demo1
-    appname: github-demo1-service
-    virtual-host-name: loving.demo1.service
+    appname: demo1-service
+    virtual-host-name: demo1-service
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
   client:
@@ -14,9 +14,3 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://localhost:8761/discovery/eureka/
-ribbon:
-  eureka:
-   enabled: true
-  NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
-  ServerListRefreshInterval: 30000
-  DeploymentContextBasedVipAddresses: github-demo1-service
