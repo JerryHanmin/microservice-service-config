@@ -15,7 +15,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://10.9.42.127:8761/discovery/eureka/
+      defaultZone: http://localhost:8761/discovery/eureka/
 group:
   id: kafka-sample-group
 kafka:
