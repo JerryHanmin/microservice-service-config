@@ -3,7 +3,7 @@ server:
 eureka:
   instance:
     virtualHostName: kafka-prouducer
-    appGroupName: sample-group
+    appGroupName: eureka-sample-group
     preferIpAddress: false
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
