@@ -1,0 +1,23 @@
+server:
+  port: 9002
+eureka:
+  instance:
+    virtualHostName: kafka-prouducer
+    appGroupName: sample-group
+    preferIpAddress: false
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    region: default
+    registryFetchIntervalSeconds: 5
+    availabilityZones:
+      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://10.9.42.127:8761/discovery/eureka/
+group:
+  id: kafka-sample-group
+kafka:
+  sample:
+    topic: kafka-sample-message
