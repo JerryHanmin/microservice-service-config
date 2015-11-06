@@ -1,0 +1,22 @@
+server:
+  port: 9005
+eureka:
+  instance:
+    virtualHostName: company-es
+    appGroupName: eureka-sample-group
+    preferIpAddress: false
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/discovery/eureka/
+elasticsearch:
+  clusterName: sample-dev
+  host: localhost
+  port: 9301
+  sniff: true
+  ignore_cluster_name: false
+  ping_timeout: 20s
+  nodes_sampler_interval: 20s
