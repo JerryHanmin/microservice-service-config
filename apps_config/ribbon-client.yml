@@ -3,8 +3,10 @@ server:
 eureka:
   instance:
     virtualHostName: ribbon-client
-    appGroupName: testGroup
-    preferIpAddress: true
+    appGroupName: sample-group
+    preferIpAddress: false
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
   client:
     region: default
     registryFetchIntervalSeconds: 5
@@ -13,4 +15,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://10.9.42.127:8761/discovery/eureka/
+      defaultZone: http://localhost:8761/discovery/eureka/
