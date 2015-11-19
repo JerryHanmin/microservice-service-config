@@ -3,7 +3,7 @@ server:
 eureka:
   instance:
     virtualHostName: ribbon-client
-    appGroupName: eureka-sample-group
+    appGroupName: loving-group
     preferIpAddress: false
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
