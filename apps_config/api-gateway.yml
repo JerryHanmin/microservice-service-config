@@ -18,3 +18,9 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://${app.eureka.hostname}:${app.eureka.port}/discovery/eureka/
+      
+      
+  
+
+
+test: test111
