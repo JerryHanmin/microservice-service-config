@@ -35,7 +35,7 @@ kafka:
     offset:
       reset: smallest
   consumer:
-    thread:
+    thread: 5
   topic:
     sample: 
       test: kafka-sample-message
