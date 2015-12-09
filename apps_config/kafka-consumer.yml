@@ -1,7 +1,7 @@
 eureka:
   instance:
     virtualHostName: ${spring.application.name}
-    appGroupName: ${app.groupName}
+    appGroupName: ${service.groupName}
     preferIpAddress: false
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
@@ -13,28 +13,39 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://${app.eureka.hostname}:${app.eureka.port}/discovery/eureka/
-
-group:
-  id: kafka-sample-group
-  
-zookeeper:
-  connect: localhost:2181
-  session:
-    timeout:
-      ms: 14000
-  sync:
-    time:
-      ms: 200
+      defaultZone: http://${service.eureka.hostname}:${service.eureka.port}/discovery/eureka/
+    
+#kafka Consumer config
+#topic format -> kafka.{Producer}.{Consumer}.topic={eventName}
 kafka:
-  sample:
-    topic: kafka-sample-message
+  group:
+    id: kafka-sample-group
+  zookeeper:
+    connect: ${service.zookeeper.hostname}:${service.zookeeper.port}
+    session:
+      timeout:
+        ms: 14000
+    sync:
+      time:
+        ms: 200
+  auto:
+    commit:
+      interval:
+        ms: 1000
+    offset:
+      reset: smallest
   consumer:
     thread:
-      num: 8
-auto:
-  commit:
-    interval:
-      ms: 1000
-  offset:
-    reset: smallest
+  topic:
+    sample: 
+      test: kafka-sample-message
+
+#elasticsearch server
+elasticsearch:
+  clusterName: ${service.elasticsearch.clusterName}
+  host: ${service.elasticsearch.hostname}
+  port: ${service.elasticsearch.port}
+  sniff: true
+  ignore_cluster_name: false
+  ping_timeout: 20s
+  nodes_sampler_interval: 20s
