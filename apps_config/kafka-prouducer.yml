@@ -19,3 +19,31 @@ group:
 kafka:
   sample:
     topic: kafka-sample-message
+
+#kafka producer config
+#topic format -> kafka.{Producer}.{Consumer}.topic={eventName}
+kafka:
+  metadata:
+    broker:
+      list: ${service.kafka.hostname}:${service.kafka.port}
+  request:
+    required:
+      acks: 0
+  num:
+    partitions: 8
+  log:
+    retention:
+      hours: 1
+  topic:
+    sample: 
+      test: kafka-sample-message
+      
+#elasticsearch server
+elasticsearch:
+  clusterName: ${service.elasticsearch.clusterName}
+  host: ${service.elasticsearch.hostname}
+  port: ${service.elasticsearch.port}
+  sniff: true
+  ignore_cluster_name: false
+  ping_timeout: 20s
+  nodes_sampler_interval: 20s
