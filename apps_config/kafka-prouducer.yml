@@ -2,7 +2,7 @@ eureka:
   instance:
     virtualHostName: ${spring.application.name}
     appGroupName: ${service.groupName}
-    preferIpAddress: false
+    preferIpAddress: true
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
   client:
