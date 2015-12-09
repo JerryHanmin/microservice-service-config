@@ -14,11 +14,6 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://${service.eureka.hostname}:${service.eureka.port}/discovery/eureka/
-group:
-  id: kafka-sample-group
-kafka:
-  sample:
-    topic: kafka-sample-message
 
 #kafka producer config
 #topic format -> kafka.{Producer}.{Consumer}.topic={eventName}
