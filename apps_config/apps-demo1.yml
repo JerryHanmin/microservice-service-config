@@ -1,7 +1,7 @@
 eureka:
   instance:
     hostname: ${spring.application.name}
-    appname: ${app.groupName}
+    appname: ${service.eureka.appGroupName}
     virtual-host-name: ${spring.application.name}
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
@@ -9,4 +9,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://${app.eureka.hostname}:${app.eureka.port}/discovery/eureka/
+      defaultZone: http://${service.eureka.hostname}:${service.eureka.port}/discovery/eureka/
