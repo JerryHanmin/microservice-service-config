@@ -1,7 +1,7 @@
 eureka:
   instance:
-    hostname: ${spring.application.name}
-    appname: ${service.eureka.appGroupName}
+    hostname: localhost
+    appname: ${spring.application.name}
     virtual-host-name: ${spring.application.name}
     metadataMap:
       instanceId: ${spring.application.name}:${server.port}
